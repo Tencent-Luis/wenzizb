@@ -3,6 +3,11 @@
  */
 var Login = require(CONTROLLER + 'login');   //获取登录模块
 
+/**
+ * 路由访问控制
+ * @param  {object} request request对象
+ * @param  {object} response response对象
+ */
 exports.router = function(request, response)
 {
     //解析编码后的uri字符串
