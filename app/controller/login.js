@@ -45,7 +45,7 @@ module.exports = function()
         });
 
         //启动socket服务，监听客户端连接
-        var time = 0;
+        var time = 0;       //避免socket发送多条消息
         io.sockets.on('connection', function(socket){
             var user_name = sessionLib.userName;
             //检查onlineList中，是否有socket连接用户信息
@@ -81,7 +81,13 @@ module.exports = function()
                     io.sockets.emit('msg', data);
                 });
             });
-            
+            //断开连接
+            socket.on('disconnect', function(){
+                delete onlineList[user_name];
+                refresh_online();
+            });
+
+            time++;
         });
     }
     
