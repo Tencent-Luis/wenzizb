@@ -47,13 +47,15 @@ module.exports = function()
         //启动socket服务，监听客户端连接
         var time = 0;       //避免socket发送多条消息
         io.sockets.on('connection', function(socket){
-            var user_name = sessionLib.userName;
+            var user_name = sessionLib.userName;   //通过session获取当前登录用户名
             //检查onlineList中，是否有socket连接用户信息
+            //检查用户是否已经存在于在线用户列表
             if(!onlineList[user_name])
             {
-                onlineList[user_name] = socket;    //没有,则存储
+                onlineList[user_name] = socket;    //没有或不存在,则存储
             }
 
+            //设置刷新在线用户函数
             var refresh_online = function(){
                 var n = [];
                 for(var i in onlineList)
@@ -63,7 +65,7 @@ module.exports = function()
 
                 var message = modules.fs.readFileSync(BASE_DIR + '/live_data.txt', 'utf8');   //同步读取文件消息
                 socket.emit('live_data', message);
-                io.sockets.emit('online_list', n);     //对所有人发送消息
+                io.sockets.emit('online_list', n);     //如果有新用户登录后，则广播在线用户列表
             }
 
             refresh_online();
@@ -91,4 +93,22 @@ module.exports = function()
         });
     }
     
+    /**
+     * 异步写数据到文件中
+     * @param  {string} data 被写入的数据
+     * @param  {function} callback 回调函数
+     */
+    function writeFile(data, callback)
+    {
+        //以utf8的格式，同步读取数据
+        var message = modules.fs.readFileSync(BASE_DIR + '/live_data.txt', 'utf8');
+        //以追加的方式，异步写入数据
+        modules.fs.writeFile(BASE_DIR + '/live_data.txt', message + data.msg, function(err){
+            if(err)
+            {
+                throw err;
+            }
+            console.log(data.data);
+        });
+    }
 }
