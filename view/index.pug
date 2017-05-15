@@ -2,15 +2,12 @@ html
 	head
 		meta(charset='utf-8')
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    	meta(http-equiv="X-UA-Compatible", content="IE=edge")
-
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
 		title index
-
 		link(rel="stylesheet", href="vendor/fontawesome/css/font-awesome.css")
 		link(rel="stylesheet", href="vendor/metisMenu/dist/metisMenu.css")
 		link(rel="stylesheet", href="vendor/animate.css/animate.css")
 		link(rel="stylesheet", href="vendor/bootstrap/dist/css/bootstrap.css")
-
 		link(rel="stylesheet", href="fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css")
 		link(rel="stylesheet", href="fonts/pe-icon-7-stroke/css/helper.css")
 		link(rel="stylesheet", href="styles/style.css")
@@ -33,8 +30,7 @@ html
 									label(class="control-label", for="password") Password
 									input(type="password", placeholder="请输入你的密码", required="", value="", name="password", id="password", class="form-control")
 								div(class="checkbox")
-									input(type="checkbox", class="i-checks", checked)
-										Remember login
+									#[input(type="checkbox", class="i-checks", id="rem", checked)] Remember login
 									p(class="help-block small") (if this is a private computer)
 								button(class="btn btn-success btn-block") Login
 			div(class="row")

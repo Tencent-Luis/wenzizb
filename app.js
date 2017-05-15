@@ -26,7 +26,7 @@ global.modules =      //添加命名空间，避免变量重名
     socket: require('socket.io'),
     path: require('path'),
     parseCookie: require('cookie-parse'),    //第三方cookie库
-    session: require('node-session'),   //第三方session库
+    NodeSession: require('node-session'),   //第三方session库
     util: require('util')
 };
 

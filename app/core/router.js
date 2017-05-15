@@ -14,8 +14,10 @@ exports.router = function(request, response)
     var pathName = decodeURI(modules.url.parse(request.url).pathname);
     modules.httpParam.init(request, response);   //初始化http的GET和POST参数获取对象
 
+    //session初始化
+    session = new modules.NodeSession({secret: 'Q3UBzdH9GEfiRCTKbi5MTPyChpzXLsTD'});
     //启动session
-    global.sessionLib = modules.session.startSession(request, response);
+    global.sessionLib = session.startSession(request, response);
 
     var controller = pathName.substr(1);     //获取访问的controller
     //获取请求controller中的方法
