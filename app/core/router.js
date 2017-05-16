@@ -15,15 +15,18 @@ exports.router = function(request, response)
     modules.httpParam.init(request, response);   //初始化http的GET和POST参数获取对象
 
     //session初始化
-    session = new modules.NodeSession({secret: 'Q3UBzdH9GEfiRCTKbi5MTPyChpzXLsTD'});
+    session = new modules.NodeSession({
+        secret: 'Q3UBzdH9GEfiRCTKbi5MTPyChpzXLsTD',
+        'lifetime': 60 * 1000,   //有效期时间(毫秒级别)，1分钟
+    });
     //启动session
-    global.sessionLib = session.startSession(request, response);
-
+    global.sessionLib = session.startSession(request, response, function(){});
+    
     var controller = pathName.substr(1);     //获取访问的controller
     //获取请求controller中的方法
     var action = modules.httpParam.GET('action');
     var Class = '';
-
+    
     if(pathName == '/favicon.ico')
     {
         //忽略favicon请求
@@ -44,7 +47,7 @@ exports.router = function(request, response)
     catch (error) 
     {
         //若require一个controller失败，则默认是静态文件请求
-        modules.staticModule.getStaticFile(pathName, response, request, BASE_DIR);
+        modules.staticModule.getStaticFile(pathName, response, request, STATIC);
         return;
     }
 

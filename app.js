@@ -40,9 +40,9 @@ global.app = modules.http.createServer(function(request, response){
     response.render = function(){
         var template = arguments[0];    //获取模板文件名
         var options = arguments[1];    //获取传递给模板中的参数对象
-
+        
         var str = modules.fs.readFileSync(template, 'utf8');   //同步读取模板文件，并以utf8的格式返回字符串
-        var fn = modules.pug.compile(str, {filename: template, pretty: true});   //编译模板文件
+        var fn = modules.pug.compile(str, {filename: template});   //编译模板文件
         var page = fn(options);    //获取被编译的模板文件
 
         response.writeHead(200, {'Content-Type': 'text/html'});    //设置头信息

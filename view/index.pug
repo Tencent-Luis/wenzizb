@@ -1,16 +1,17 @@
+doctype html
 html
 	head
 		meta(charset='utf-8')
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		meta(http-equiv="X-UA-Compatible", content="IE=edge")
 		title index
-		link(rel="stylesheet", href="vendor/fontawesome/css/font-awesome.css")
-		link(rel="stylesheet", href="vendor/metisMenu/dist/metisMenu.css")
-		link(rel="stylesheet", href="vendor/animate.css/animate.css")
-		link(rel="stylesheet", href="vendor/bootstrap/dist/css/bootstrap.css")
-		link(rel="stylesheet", href="fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css")
-		link(rel="stylesheet", href="fonts/pe-icon-7-stroke/css/helper.css")
-		link(rel="stylesheet", href="styles/style.css")
+		link(type="text/css", rel="stylesheet", href="vendor/fontawesome/css/font-awesome.css")
+		link(type="text/css", rel="stylesheet", href="vendor/metisMenu/dist/metisMenu.css")
+		link(type="text/css", rel="stylesheet", href="vendor/animate.css/animate.css")
+		link(type="text/css", rel="stylesheet", href="vendor/bootstrap/dist/css/bootstrap.css")
+		link(type="text/css", rel="stylesheet", href="fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css")
+		link(type="text/css", rel="stylesheet", href="fonts/pe-icon-7-stroke/css/helper.css")
+		link(type="text/css", rel="stylesheet", href="styles/style.css")
 
 	body(class="blank")
 		div(class="color-line")
@@ -30,10 +31,21 @@ html
 									label(class="control-label", for="password") Password
 									input(type="password", placeholder="请输入你的密码", required="", value="", name="password", id="password", class="form-control")
 								div(class="checkbox")
-									#[input(type="checkbox", class="i-checks", id="rem", checked)] Remember login
+									input(type="checkbox", class="i-checks", id="remember", checked="") 
+									| Remember login
 									p(class="help-block small") (if this is a private computer)
 								button(class="btn btn-success btn-block") Login
 			div(class="row")
 				div(class="col-md-12 text-center")
 					strong HOMER 
-					br 2015 Copyright Company Name
+					br 
+					| 2015 Copyright Company Name
+
+		script(src="vendor/jquery/dist/jquery.min.js")
+		script(src="vendor/jquery-ui/jquery-ui.min.js")
+		script(src="vendor/slimScroll/jquery.slimscroll.min.js")
+		script(src="vendor/bootstrap/dist/js/bootstrap.min.js")
+		script(src="vendor/metisMenu/dist/metisMenu.min.js")
+		script(src="vendor/iCheck/icheck.min.js")
+		script(src="vendor/sparkline/index.js")
+		script(src="scripts/homer.js")
