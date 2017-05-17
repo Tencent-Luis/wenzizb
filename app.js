@@ -8,7 +8,7 @@ global.CONTROLLER = APP + "/controller/";
 global.CORE = APP + "/core/";
 global.LIB = BASE_DIR + "/node_modules/";    //第三方模块库
 global.CONF = BASE_DIR + "/conf/";      //配置文件
-global.STATIC = BASE_DIR + "/static/";     //静态资源文件
+global.STATIC = BASE_DIR + "/static";     //静态资源文件
 global.VIEW = BASE_DIR + "/view/";     //视图文件
 
 //modules的引入
@@ -52,6 +52,7 @@ global.app = modules.http.createServer(function(request, response){
     //路由访问，处理http请求
     modules.router.router(request, response);
 }).listen(8000);
+console.log('Server running at http://127.0.0.1:8000');
 
 //设置全局的socket.io，启动socket服务
 global.io = modules.socket.listen(app);
