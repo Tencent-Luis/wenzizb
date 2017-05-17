@@ -17,7 +17,7 @@ module.exports = function()
         {
             return true;
         }
-        else if(sessionLib.userName && sessionLib.userName != '')    //判断session是否存在
+        else if(_request.session.get('account') && _request.session.get('account') != '')    //判断session是否存在
         {
             return true;
         }
@@ -31,7 +31,7 @@ module.exports = function()
     this.login = function()
     {
         modules.httpParam.POST('username', function(value){
-            sessionLib.userName = value;    //设定session
+            _request.session.put('account', value);    //设定session
             if(value == 'owen')
             {
                 //直播员进入直播模块
