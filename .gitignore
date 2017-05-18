@@ -1,0 +1,8 @@
+#Ignore .gitignore
+#.gitignore
+
+#Ignore session dir
+wenzizb/sessions/*
+
+#Ignore live_data.txt
+wenzizb/*.txt
