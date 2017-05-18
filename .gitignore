@@ -2,7 +2,7 @@
 #.gitignore
 
 #Ignore session dir
-wenzizb/sessions/*
+sessions/*
 
 #Ignore live_data.txt
-wenzizb/*.txt
+*.txt
