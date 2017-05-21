@@ -43,11 +43,11 @@ module.exports = function()
                 _response.render(VIEW + 'main.pug', {'user': value});
             }
         });
-
+        
         //启动socket服务，监听客户端连接
         var time = 0;       //避免socket发送多条消息
         io.sockets.on('connection', function(socket){
-            var user_name = sessionLib.userName;   //通过session获取当前登录用户名
+            var user_name = _request.session.get('account');   //通过session获取当前登录用户名
             //检查onlineList中，是否有socket连接用户信息
             //检查用户是否已经存在于在线用户列表
             if(!onlineList[user_name])
