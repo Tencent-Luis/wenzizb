@@ -54,7 +54,7 @@ module.exports = function()
             {
                 onlineList[user_name] = socket;    //没有或不存在,则存储
             }
-
+            
             //设置刷新在线用户函数
             var refresh_online = function(){
                 var n = [];
