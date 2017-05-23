@@ -64,7 +64,7 @@ module.exports = function()
                 }
 
                 var message = modules.fs.readFileSync(BASE_DIR + '/live_data.txt', 'utf8');   //同步读取文件消息
-                socket.emit('live_data', message);
+                socket.emit('live_data', message);    //将历史记录发送到客户端
                 io.sockets.emit('online_list', n);     //如果有新用户登录后，则广播在线用户列表
             }
 
@@ -75,10 +75,10 @@ module.exports = function()
             {
                 return;
             }
-            socket.on('public', function(data){
-                var insertMsg = '<li><span class="icon-user"></span>' + 
-                    '<span class="live_user_name text-success">[owen]</span><span class="live_message text-info">' + 
-                    data.msg + '</span></li>';
+            socket.on('public', function(data){ 
+                var insertMsg = '<div class="chat-message left"><img class="message-avatar" src="images/a2.jpg" />' + 
+                    '<div class="message"><a class="message-author" style="color:blue;">' + user_name + '</a><span class="message-date">Fri Jan 25 2015 - 11:12:36</span>' + 
+                    '<span class="message-content">' + data.msg + '</span></div></div>';
                 writeFile({'msg': insertMsg, 'data': data}, function(data){
                     io.sockets.emit('msg', data);
                 });
