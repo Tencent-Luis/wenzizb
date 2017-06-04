@@ -119,15 +119,15 @@ module.exports = function()
  */
 function getTime()
 {
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var date = date.getDate();
+    var dates = new Date();
+    var year = dates.getFullYear();
+    var month = dates.getMonth() + 1;
+    var date = dates.getDate();
     var day = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
-    var hour = (date.getHours()) < 10 ? "0" + date.getHours() : date.getHours();
-    var minute = (date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes();
-    var second = (date.getSeconds() < 10) ? "0" + date.getSeconds() : date.getSeconds();
-    var currentTime = year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second + " " + day[date.getDay()];
+    var hour = (dates.getHours()) < 10 ? "0" + dates.getHours() : dates.getHours();
+    var minute = (dates.getMinutes() < 10) ? "0" + dates.getMinutes() : dates.getMinutes();
+    var second = (dates.getSeconds() < 10) ? "0" + dates.getSeconds() : dates.getSeconds();
+    var currentTime = year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second + " " + day[dates.getDay()];
 
     return currentTime;
 }
