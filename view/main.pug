@@ -21,37 +21,14 @@ html
 								div(class="row")
 									div(class="col-md-9")
 										div(class="chat-discussion")
-											div(class="chat-message left")
-												img(class="message-avatar" src="images/a2.jpg" alt="")
-												div(class="message")
-													a(class="message-author" href="chat_view.html#") Michael Smith
-													span(class="message-date")
-														| Fri Jan 25 2015 - 11:12:36 
-													span(class="message-content")
-														| There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-											div(class="chat-message right")
-												img(class="message-avatar" src="images/a2.jpg" alt="")
-												div(class="message")
-													a(class="message-author" href="chat_view.html#") Michael Smith 
-													span(class="message-date") 
-														| Fri Jan 25 2015 - 11:12:36 
-													span(class="message-content")
-														| There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+											
 									div(class="col-md-3")
 										div(class="chat-users")
 											div(class="users-list")
-												div(class="chat-user")
-													span(class="pull-right label label-success") Online
-													img(class="chat-avatar" src="images/a3.jpg" alt="")
-													div(class="chat-user-name")
-														a(href="chat_view.html#")
-														| Janet Smith
-												div(class="chat-user")
-													img(class="chat-avatar" src="images/a1.jpg" alt="")
-													div(class="chat-user-name")
-														a(href="chat_view.html#")
-														| Monica Smith	
+											
 			<!-- Footer-->
 			footer(class="footer")
 				| Company 2015-2020
 		include footer.pug
+		script(type="text/javascript" src="scripts/socket.io.js")
+		script(type="text/javascript" src="scripts/main.js")

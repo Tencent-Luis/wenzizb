@@ -75,12 +75,12 @@ module.exports = function()
             {
                 return;
             }
-            socket.on('public', function(data){ 
+            socket.on('public', function(data){
                 var insertMsg = '<div class="chat-message left"><img class="message-avatar" src="images/a2.jpg" />' + 
                     '<div class="message"><a class="message-author" style="color:blue;">' + user_name + '</a><span class="message-date">' + getTime() + '</span>' + 
                     '<span class="message-content">' + data.msg + '</span></div></div>';
                 writeFile({'msg': insertMsg, 'data': data}, function(data){
-                    io.sockets.emit('msg', data);
+                    io.sockets.emit('live_data', data);
                 });
             });
             //断开连接
@@ -108,7 +108,8 @@ module.exports = function()
             {
                 throw err;
             }
-            console.log(data.data);
+            //console.log(data.data);
+            callback(data.msg);
         });
     }
 }

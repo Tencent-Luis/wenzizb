@@ -15,11 +15,3 @@ socket.on('online_list', function(user_list){
 	}
 	$('.users-list').append(html);
 });
-
-//发送消息
-function send()
-{
-	var message = $('#msg_txt').val();
-	socket.emit('public', {msg: message}); 
-	$('#msg_txt').val('');   //发送后，清空文本框
-}
