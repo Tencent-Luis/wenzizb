@@ -47,6 +47,12 @@ module.exports = function()
         //启动socket服务，监听客户端连接
         var time = 0;       //避免socket发送多条消息
         io.sockets.on('connection', function(socket){
+            //确保每次只发送一个socket消息,浏览器刷新时，也只显示一组数据
+            if(time > 0)
+            {
+                return;
+            }
+
             var user_name = _request.session.get('account');   //通过session获取当前登录用户名
             //检查onlineList中，是否有socket连接用户信息
             //检查用户是否已经存在于在线用户列表
@@ -56,7 +62,7 @@ module.exports = function()
             }
             
             //设置刷新在线用户函数
-            var refresh_online = function(){
+            var refresh_online = function(){console.log('刷新页面refresh！');
                 var n = [];
                 for(var i in onlineList)
                 {
@@ -70,11 +76,6 @@ module.exports = function()
 
             refresh_online();
 
-            //确保每次只发送一个socket消息
-            if(time > 0)
-            {
-                return;
-            }
             socket.on('public', function(data){
                 var insertMsg = '<div class="chat-message left"><img class="message-avatar" src="images/a2.jpg" />' + 
                     '<div class="message"><a class="message-author" style="color:blue;">' + user_name + '</a><span class="message-date">' + getTime() + '</span>' + 
@@ -85,8 +86,9 @@ module.exports = function()
             });
             //断开连接
             socket.on('disconnect', function(){
+                console.log('断开socket连接！');
                 delete onlineList[user_name];
-                refresh_online();
+                //refresh_online();
             });
 
             time++;

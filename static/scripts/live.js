@@ -6,6 +6,8 @@ socket.on('live_data', function(data){
 
 //接收在线用户列表
 socket.on('online_list', function(user_list){
+	//每次有新的用户登录后，先将原来的用户列表清除
+	$('.users-list').children().remove();
 	var html = '';
 	for(var i = 0; i < user_list.length; i++)
 	{
