@@ -62,7 +62,7 @@ module.exports = function()
             }
             
             //设置刷新在线用户函数
-            var refresh_online = function(){console.log('刷新页面refresh！');
+            var refresh_online = function(){
                 var n = [];
                 for(var i in onlineList)
                 {
@@ -86,7 +86,6 @@ module.exports = function()
             });
             //断开连接
             socket.on('disconnect', function(){
-                console.log('断开socket连接！');
                 delete onlineList[user_name];
                 //refresh_online();
             });
