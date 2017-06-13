@@ -92,6 +92,8 @@ module.exports = function()
 
             time++;
         });
+
+        return;
     }
     
     /**
